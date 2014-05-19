@@ -36,9 +36,10 @@ public class DataLoader implements ActionListener {
 		ArrayList<StockPrice> data = new ArrayList<StockPrice>();
 
 		try {
+			reader.readNext();
 			while ((nextLine = reader.readNext()) != null) {
-				data.add(new StockPrice(nextLine[0], nextLine[1], nextLine[2],
-						nextLine[3]));
+				data.add(new StockPrice(nextLine[1], nextLine[2], nextLine[3],
+						nextLine[4]));
 			}
 		} catch (IndexOutOfBoundsException e2) {
 			context.exception("Incorrect data format.");

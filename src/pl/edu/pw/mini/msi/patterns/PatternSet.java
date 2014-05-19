@@ -21,5 +21,6 @@ public class PatternSet {
 		patterns = new ArrayList<>();
 
 		patterns.add(new ThreeBlackCrows());
+		patterns.add(new ThreeWhiteSoldiers());
 	}
 }
