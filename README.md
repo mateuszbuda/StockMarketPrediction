@@ -5,7 +5,7 @@ Expert system for predicting stock market timing using a candlestick chart.
 
 
 Dependencies:
-In order to complie this project, opencsv project is required on the build path.
+In order to compile this project, opencsv project is required on the build path.
 
 You can download it from here:
 http://sourceforge.net/projects/opencsv/

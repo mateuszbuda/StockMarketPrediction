@@ -8,8 +8,8 @@ import pl.edu.pw.mini.msi.utils.Type;
 public class ThreeBlackCrows implements Pattern {
 	@Override
 	public double matchData(ArrayList<StockPrice> data) {
-		// three days for trend leading to pattern
-		// and tree days for pattern itself
+		// three days for trend leading to the pattern
+		// and tree days for the pattern itself
 		if (data.size() < 6)
 			return 0;
 
@@ -24,13 +24,13 @@ public class ThreeBlackCrows implements Pattern {
 				|| data.get(2).close > data.get(3).close)
 			return 0;
 
-		// how much black candlesticks match to black crows from pattern
+		// how much black candlesticks match to black crows from the pattern
 		double match = 0;
 		match = getCrowMatch(data.get(0));
 		match = (match + getCrowMatch(data.get(1))) / 2;
 		match = (match + getCrowMatch(data.get(2))) / 2;
 
-		// match of the trend leading to pattern
+		// match of the trend leading to the pattern
 		if (data.get(3).close < data.get(4).close
 				|| data.get(4).close < data.get(5).close
 				|| data.get(5).close < data.get(6).close)
