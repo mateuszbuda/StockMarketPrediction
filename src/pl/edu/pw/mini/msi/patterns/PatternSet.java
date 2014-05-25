@@ -6,8 +6,7 @@ import java.util.List;
 public class PatternSet {
 	private static List<Pattern> patterns;
 
-	public PatternSet() {
-		init();
+	private PatternSet() {
 	}
 
 	public static List<Pattern> instance() {

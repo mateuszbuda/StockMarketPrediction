@@ -1,54 +1,64 @@
 package pl.edu.pw.mini.msi.utils;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.StringTokenizer;
 
-import javax.swing.JFileChooser;
+import pl.edu.pw.mini.msi.CandlestickChart;
 
-import pl.edu.pw.mini.msi.ClientDialog;
-import au.com.bytecode.opencsv.CSVReader;
+public class DataLoader {
+	private static final int DAY = 24 * 3600 * 1000;
+	private static final int PERIOD = 21;
 
-public class DataLoader implements ActionListener {
-	ClientDialog context;
+	CandlestickChart chart;
+	ArrayList<StockPrice> data = new ArrayList<>();
 
-	public DataLoader(ClientDialog context) {
-		this.context = context;
-	}
-
-	@SuppressWarnings("resource")
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.showOpenDialog(context);
-		CSVReader reader = null;
-		try {
-			reader = new CSVReader(
-					new FileReader(fileChooser.getSelectedFile()));
-		} catch (FileNotFoundException e1) {
-			context.exception("File not found.");
-			return;
-		}
-
-		String[] nextLine;
-		ArrayList<StockPrice> data = new ArrayList<StockPrice>();
+	public ArrayList<StockPrice> loadData(String stockSymbol) {
+		data.clear();
+		Calendar from = Calendar.getInstance(), to = Calendar.getInstance();
+		from.setTimeInMillis(to.getTimeInMillis() - PERIOD * DAY);
 
 		try {
-			reader.readNext();
-			while ((nextLine = reader.readNext()) != null) {
-				data.add(new StockPrice(nextLine[1], nextLine[2], nextLine[3],
-						nextLine[4]));
+			String strUrl = "http://ichart.finance.yahoo.com/table.csv?s="
+					+ stockSymbol + "&a=" + from.get(Calendar.MONTH) + "&b="
+					+ from.get(Calendar.DAY_OF_MONTH) + "&c="
+					+ from.get(Calendar.YEAR) + "&d=" + to.get(Calendar.MONTH)
+					+ "&e=" + to.get(Calendar.DAY_OF_MONTH) + "&f="
+					+ to.get(Calendar.YEAR) + "&g=d&ignore=.csv";
+			URL url = new URL(strUrl);
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					url.openStream()));
+			DateFormat df = new SimpleDateFormat("y-M-d");
+
+			String inputLine;
+			in.readLine();
+			while ((inputLine = in.readLine()) != null) {
+				StringTokenizer st = new StringTokenizer(inputLine, ",");
+
+				Date date = df.parse(st.nextToken()); // ignored
+				double open = Double.parseDouble(st.nextToken());
+				double high = Double.parseDouble(st.nextToken());
+				double low = Double.parseDouble(st.nextToken());
+				double close = Double.parseDouble(st.nextToken());
+				double volume = Double.parseDouble(st.nextToken()); // ignored
+
+				StockPrice item = new StockPrice(open, high, low, close);
+				data.add(item);
 			}
-		} catch (IndexOutOfBoundsException e2) {
-			context.exception("Incorrect data format.");
-			return;
-		} catch (Exception e1) {
-			context.exception("Error: " + e1.getMessage());
-			return;
+			in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		context.displayData(data);
+		chart = new CandlestickChart(stockSymbol, data);
+		chart.setVisible(true);
+
+		return data;
 	}
 }
