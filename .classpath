@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/mateusz/workspace/StockMarketPrediction/jcommon-1.0.21.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mateusz/workspace/StockMarketPrediction/jfreechart-1.0.17.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
