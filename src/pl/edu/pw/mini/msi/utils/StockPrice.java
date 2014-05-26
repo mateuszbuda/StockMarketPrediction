@@ -19,12 +19,12 @@ public class StockPrice {
 		this.low = Double.valueOf(low);
 		this.close = Double.valueOf(close);
 	}
-	
-	public boolean isBlack(){
+
+	public boolean isBlack() {
 		return body() < 0;
 	}
-	
-	public boolean isWhite(){
+
+	public boolean isWhite() {
 		return body() > 0;
 	}
 

@@ -11,15 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-<<<<<<< HEAD
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-=======
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
->>>>>>> c7d956c70e92e028ab229ce9ed989176e0ef4969
 
 import pl.edu.pw.mini.msi.utils.PatternParser;
 
