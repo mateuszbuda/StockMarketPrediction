@@ -1,10 +1,5 @@
 package pl.edu.pw.mini.msi.utils;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
 import pl.edu.pw.mini.msi.ClientDialog;
 import pl.edu.pw.mini.msi.patterns.Pattern;
 import pl.edu.pw.mini.msi.patterns.PatternSet;
