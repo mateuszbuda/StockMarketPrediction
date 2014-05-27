@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
 
 import pl.edu.pw.mini.msi.patterns.Pattern;
 import pl.edu.pw.mini.msi.utils.DataLoader;
@@ -18,13 +19,16 @@ import pl.edu.pw.mini.msi.utils.PatternParser;
 import pl.edu.pw.mini.msi.utils.StockPrice;
 
 public class ClientDialog extends JFrame {
+	private static final long serialVersionUID = 1;
 	JButton btnDeduce;
 	JLabel lblPattern;
 	JLabel lblAnswer;
+	JLabel lblMatch;
 	JTextArea textData;
 	PatternParser patternParser;
 
 	public ClientDialog() throws HeadlessException {
+		setTitle("Stock Market Prediction");
 
 		JTextArea textData = new JTextArea();
 		textData.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -50,16 +54,31 @@ public class ClientDialog extends JFrame {
 		JLabel lblPattern = new JLabel("");
 		splitPane_1.setRightComponent(lblPattern);
 		this.lblPattern = lblPattern;
-
-		JSplitPane splitPane_2 = new JSplitPane();
-		splitPane.setRightComponent(splitPane_2);
-
-		JLabel lblAnswerTitle = new JLabel("Answer: ");
-		splitPane_2.setLeftComponent(lblAnswerTitle);
-
-		JLabel lblAnswer = new JLabel("");
-		splitPane_2.setRightComponent(lblAnswer);
-		this.lblAnswer = lblAnswer;
+		
+		JSplitPane splitPane_4 = new JSplitPane();
+		splitPane_4.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		splitPane.setRightComponent(splitPane_4);
+		splitPane_4.setBorder(new EmptyBorder(splitPane_4.getInsets()));
+		
+				JSplitPane splitPane_2 = new JSplitPane();
+				splitPane_4.setLeftComponent(splitPane_2);
+				
+						JLabel lblAnswerTitle = new JLabel("Answer: ");
+						splitPane_2.setLeftComponent(lblAnswerTitle);
+						
+								JLabel lblAnswer_1 = new JLabel("");
+								splitPane_2.setRightComponent(lblAnswer_1);
+								this.lblAnswer = lblAnswer_1;
+								
+								JSplitPane splitPane_5 = new JSplitPane();
+								splitPane_4.setRightComponent(splitPane_5);
+								
+								JLabel lblMatchTitle = new JLabel("Match: ");
+								splitPane_5.setLeftComponent(lblMatchTitle);
+								
+								JLabel lblMatch_1 = new JLabel("");
+								splitPane_5.setRightComponent(lblMatch_1);
+								this.lblMatch = lblMatch_1;
 
 		JSplitPane splitPane_3 = new JSplitPane();
 		splitPane_3.setOrientation(JSplitPane.VERTICAL_SPLIT);
@@ -90,11 +109,10 @@ public class ClientDialog extends JFrame {
 		btnDeduce.setEnabled(true);
 	}
 
-	public void displayAnswer(Pattern pattern) {
+	public void displayAnswer(Pattern pattern, double match) {
 		lblPattern.setText(pattern.name());
-		lblAnswer
-				.setText(pattern.type() == pl.edu.pw.mini.msi.utils.Type.BULLISH ? "Buy!"
-						: "Sell!");
+		lblAnswer.setText(pattern.type().getAction());
+		lblMatch.setText(String.format("%3.2f%%", match*100));
 	}
 
 	public void exception(String msg) {

@@ -22,7 +22,7 @@ public class DataLoader implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.showOpenDialog(context);
+		if (fileChooser.showOpenDialog(context)!=JFileChooser.APPROVE_OPTION) return;
 		CSVReader reader = null;
 		try {
 			reader = new CSVReader(

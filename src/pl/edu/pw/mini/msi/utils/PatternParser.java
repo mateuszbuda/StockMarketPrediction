@@ -17,7 +17,7 @@ public class PatternParser implements ActionListener {
 		this.data = data;
 	}
 
-	public Pattern findPattern() {
+	public Pair<Pattern, Double> findPattern() {
 		Pattern best = null;
 		double max = -1;
 
@@ -29,7 +29,7 @@ public class PatternParser implements ActionListener {
 			}
 		}
 
-		return best;
+		return new Pair<Pattern, Double>(best, max);
 	}
 
 	public void setData(ArrayList<StockPrice> data) {
@@ -38,6 +38,7 @@ public class PatternParser implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		context.displayAnswer(findPattern());
+		Pair<Pattern, Double> result = findPattern();
+		context.displayAnswer(result.key, result.value);
 	}
 }
