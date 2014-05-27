@@ -8,3 +8,5 @@
 *.war
 *.ear
 /bin
+
+!opencsv-2.3.jar
