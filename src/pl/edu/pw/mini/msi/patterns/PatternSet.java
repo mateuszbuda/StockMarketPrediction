@@ -24,5 +24,7 @@ public class PatternSet {
 		patterns.add(new ThreeWhiteSoldiers());
 		patterns.add(new WhiteSpinningTop());
 		patterns.add(new BlackSpinningTop());
+		patterns.add(new WhiteCandle());
+		patterns.add(new BlackCandle());
 	}
 }

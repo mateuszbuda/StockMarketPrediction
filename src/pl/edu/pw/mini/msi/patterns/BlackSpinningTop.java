@@ -14,8 +14,8 @@ public class BlackSpinningTop implements Pattern {
 		if (top.isWhite())
 			return 0;
 		//Checks if shadows are longer than body
-		if (top.body()<top.upperShadow() &&
-			top.body()<top.lowerShadow())
+		if (Math.abs(top.body())<top.upperShadow() &&
+				Math.abs(top.body())<top.lowerShadow())
 			return getSpinMatch(top);
 		return 0;
 	}
