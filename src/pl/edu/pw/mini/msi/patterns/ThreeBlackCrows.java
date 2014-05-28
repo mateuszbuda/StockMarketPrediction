@@ -13,15 +13,9 @@ public class ThreeBlackCrows implements Pattern {
 		if (data.size() < 6)
 			return 0;
 
-		// / one of candlesticks is not black
+		// one of candlesticks is not black
 		if (data.get(0).body() > 0 || data.get(1).body() > 0
 				|| data.get(2).body() > 0)
-			return 0;
-
-		// closing price is not falling
-		if (data.get(0).close > data.get(1).close
-				|| data.get(1).close > data.get(2).close
-				|| data.get(2).close > data.get(3).close)
 			return 0;
 
 		// how much black candlesticks match to black crows from the pattern

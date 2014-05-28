@@ -25,7 +25,9 @@ public class ClientDialog extends JFrame {
 	public JLabel lblMatch3;
 	public JComboBox<String> stockOptions;
 	public PatternParser patternParser;
-	static final String[] STOCKS = { "GOOG", "FB", "YHOO" };
+	static final String[] STOCKS = { "GOOG", "FB", "TWTR", "YHOO", "AAPL",
+			"CSCO", "T", "INTC", "MSFT", "ORCL", "ZNGA", "EBAY", "GE", "GRPN",
+			"GM", "FOXA", "VZ", "NOK", "HPQ", "MCD" };
 
 	public ClientDialog() throws HeadlessException {
 		patternParser = new PatternParser(this);
