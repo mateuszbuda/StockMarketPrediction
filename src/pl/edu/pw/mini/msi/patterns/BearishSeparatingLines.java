@@ -19,7 +19,7 @@ public class BearishSeparatingLines implements Pattern {
 			return 0;
 		}
 
-		if (data.get(1).isBlack() && data.get(0).isWhite()) {
+		if (data.get(1).isBlack() || data.get(0).isWhite()) {
 			return 0;
 		}
 
@@ -34,7 +34,7 @@ public class BearishSeparatingLines implements Pattern {
 					: bodyPercent - 0.9);
 		}
 
-		bodyPercent = data.get(0).body() / (data.get(0).high - data.get(0).low);
+		bodyPercent = data.get(0).body() / (data.get(0).high - data.get(1).low);
 
 		if (bodyPercent >= 0.8 && bodyPercent <= 0.9) {
 			match = (match + 1.0) / 2;
