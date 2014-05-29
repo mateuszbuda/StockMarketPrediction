@@ -5,23 +5,22 @@ import java.util.ArrayList;
 import pl.edu.pw.mini.msi.utils.StockPrice;
 import pl.edu.pw.mini.msi.utils.Type;
 
-public class BearishSeparatingLines implements Pattern {
+public class BullishSeparatingLines implements Pattern {
 
-	private static final String PATTERN_NAME = "Bearish Separating Lines";
+	private static final String PATTERN_NAME = "Bullish Separating Lines";
 
 	@Override
 	public double matchData(ArrayList<StockPrice> data) {
-
 		if (data.size() < 5) {
 			return 0;
 		}
 
-		if (data.get(2).close > data.get(3).close
-				|| data.get(3).close > data.get(4).close) {
+		if (data.get(2).close < data.get(3).close
+				|| data.get(3).close < data.get(4).close) {
 			return 0;
 		}
 
-		if (data.get(1).isBlack() || data.get(0).isWhite()) {
+		if (data.get(1).isWhite() || data.get(0).isBlack()) {
 			return 0;
 		}
 
@@ -45,7 +44,7 @@ public class BearishSeparatingLines implements Pattern {
 					: bodyPercent - 0.9)) / 2;
 		}
 
-		return match;
+		return 0;
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class BearishSeparatingLines implements Pattern {
 
 	@Override
 	public Type type() {
-		return Type.BEARISH;
+		return Type.BULLISH;
 	}
 
 }
