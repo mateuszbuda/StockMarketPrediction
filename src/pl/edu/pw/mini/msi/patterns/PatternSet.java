@@ -25,5 +25,6 @@ public class PatternSet {
 		patterns.add(new BlackSpinningTop());
 		patterns.add(new WhiteCandle());
 		patterns.add(new BlackCandle());
+		patterns.add(new BearishSeparatingLines());
 	}
 }
