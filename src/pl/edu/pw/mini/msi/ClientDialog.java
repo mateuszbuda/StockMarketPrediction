@@ -2,6 +2,7 @@ package pl.edu.pw.mini.msi;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.HeadlessException;
 
@@ -19,15 +20,19 @@ import pl.edu.pw.mini.msi.utils.PatternParser;
 public class ClientDialog extends JFrame {
 	public JLabel lblPattern1;
 	public JLabel lblMatch1;
+	public JLabel lblAnswer1;
 	public JLabel lblPattern2;
 	public JLabel lblMatch2;
+	public JLabel lblAnswer2;
 	public JLabel lblPattern3;
 	public JLabel lblMatch3;
+	public JLabel lblAnswer3;
 	public JComboBox<String> stockOptions;
 	public PatternParser patternParser;
 	static final String[] STOCKS = { "GOOG", "FB", "TWTR", "YHOO", "AAPL",
 			"CSCO", "T", "INTC", "MSFT", "ORCL", "ZNGA", "EBAY", "GE", "GRPN",
 			"GM", "FOXA", "VZ", "NOK", "HPQ", "MCD" };
+	private static final int H = 15;
 
 	public ClientDialog() throws HeadlessException {
 		patternParser = new PatternParser(this);
@@ -58,9 +63,12 @@ public class ClientDialog extends JFrame {
 		getContentPane().add(verticalBox_1, BorderLayout.CENTER);
 
 		JSeparator separator = new JSeparator();
+		separator.setMaximumSize(new Dimension(
+				separator.getMaximumSize().width, ClientDialog.H));
 		verticalBox_1.add(separator);
 
 		Box horizontalBox = Box.createHorizontalBox();
+		horizontalBox.setAlignmentY(Component.CENTER_ALIGNMENT);
 		verticalBox_1.add(horizontalBox);
 
 		Box verticalBox_2 = Box.createVerticalBox();
@@ -90,7 +98,20 @@ public class ClientDialog extends JFrame {
 		lblMatch1 = lblBestMatch1;
 		horizontalBox_4.add(lblBestMatch1);
 
+		Box horizontalBox_9 = Box.createHorizontalBox();
+		verticalBox_2.add(horizontalBox_9);
+
+		JLabel lblNewLabel_1 = new JLabel("Answer: ");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		horizontalBox_9.add(lblNewLabel_1);
+
+		lblAnswer1 = new JLabel("?");
+		lblAnswer1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		horizontalBox_9.add(lblAnswer1);
+
 		JSeparator separator_1 = new JSeparator();
+		separator_1.setMaximumSize(new Dimension(
+				separator_1.getMaximumSize().width, ClientDialog.H));
 		verticalBox_1.add(separator_1);
 
 		Box horizontalBox_1 = Box.createHorizontalBox();
@@ -123,7 +144,20 @@ public class ClientDialog extends JFrame {
 		lblMatch2 = lblBestMatch2;
 		horizontalBox_6.add(lblBestMatch2);
 
+		Box horizontalBox_10 = Box.createHorizontalBox();
+		verticalBox_3.add(horizontalBox_10);
+
+		JLabel lblAnswer = new JLabel("Answer: ");
+		lblAnswer.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		horizontalBox_10.add(lblAnswer);
+
+		lblAnswer2 = new JLabel("?");
+		lblAnswer2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		horizontalBox_10.add(lblAnswer2);
+
 		JSeparator separator_2 = new JSeparator();
+		separator_2.setMaximumSize(new Dimension(
+				separator_2.getMaximumSize().width, ClientDialog.H));
 		verticalBox_1.add(separator_2);
 
 		Box horizontalBox_2 = Box.createHorizontalBox();
@@ -155,5 +189,21 @@ public class ClientDialog extends JFrame {
 		lblBestMatch3.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblMatch3 = lblBestMatch3;
 		horizontalBox_8.add(lblBestMatch3);
+
+		Box horizontalBox_11 = Box.createHorizontalBox();
+		verticalBox_4.add(horizontalBox_11);
+
+		lblAnswer = new JLabel("Answer: ");
+		lblAnswer.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		horizontalBox_11.add(lblAnswer);
+
+		lblAnswer3 = new JLabel("?");
+		lblAnswer3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		horizontalBox_11.add(lblAnswer3);
+
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setMaximumSize(new Dimension(
+				separator_3.getMaximumSize().width, ClientDialog.H));
+		verticalBox_1.add(separator_3);
 	}
 }

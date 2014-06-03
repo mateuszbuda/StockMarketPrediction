@@ -23,9 +23,9 @@ public class PatternMatcher {
 				.get(2).low + stocks.get(2).high) / 2) / 3;
 
 		double x = 1.5;
-		double y = (second + third) / 2;
+		double y = (second + first) / 2;
 
-		double a = (y - first) / x;
+		double a = (y - third) / x;
 
 		if (a > 0)
 			return 0;
@@ -42,9 +42,9 @@ public class PatternMatcher {
 				.get(2).low + stocks.get(2).high) / 2) / 3;
 
 		double x = 1.5;
-		double y = (second + third) / 2;
+		double y = (second + first) / 2;
 
-		double a = (y - first) / x;
+		double a = (y - third) / x;
 
 		if (a < 0)
 			return 0;

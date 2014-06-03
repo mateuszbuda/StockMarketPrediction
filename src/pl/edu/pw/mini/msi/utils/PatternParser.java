@@ -47,14 +47,17 @@ public class PatternParser implements ActionListener {
 		if (best[0] != null) {
 			context.lblPattern1.setText(best[0].name());
 			context.lblMatch1.setText(df.format(max[0]));
+			context.lblAnswer1.setText(best[0].type().getAction());
 		}
 		if (best[1] != null) {
 			context.lblPattern2.setText(best[1].name());
 			context.lblMatch2.setText(df.format(max[1]));
+			context.lblAnswer2.setText(best[1].type().getAction());
 		}
 		if (best[2] != null) {
 			context.lblPattern3.setText(best[2].name());
 			context.lblMatch3.setText(df.format(max[2]));
+			context.lblAnswer3.setText(best[2].type().getAction());
 		}
 	}
 
