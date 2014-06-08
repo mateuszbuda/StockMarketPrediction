@@ -27,5 +27,7 @@ public class PatternSet {
 		patterns.add(new BlackCandle());
 		patterns.add(new BearishSeparatingLines());
 		patterns.add(new BullishSeparatingLines());
+		patterns.add(new BaerishShootingStar());
+		patterns.add(new BullishShootingStar());
 	}
 }
